@@ -1,0 +1,38 @@
+server:
+  port: 80
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost:3306/quiz?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false
+      password: 11111
+      username: root
+      driver-class-name: com.mysql.jdbc.Driver
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  dubbo:
+    appname: quiz-manager-controller
+    protocol: dubbo
+    registry: zookeeper://192.168.40.140:2181
+    port: 20880
+    
+    
+    
